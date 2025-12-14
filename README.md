@@ -1,139 +1,15 @@
-# Banner Comment
-
-A Visual Studio Code extension that lets you quickly create neat banner comments from the selected text.
-It is handy for visually separating code blocks, adding headings to configuration files, or simply leaving eye-catching comments.
-
-## Features
-
-- Converts the selected text into a styled banner.
-- **Two banner styles:**
-  - **Simple** — single-line banner: `// --- TEXT ---`
-  - **Box** — framed multi-line banner with 4 border styles
-- **Auto-detects language comment style:**
-  - `//` for JavaScript, TypeScript, Java, C#, Go, Rust, etc.
-  - `#` for Python, Ruby, Shell, YAML, Dockerfile, etc.
-  - `--` for SQL, Lua, Haskell, etc.
-  - `;;` for Clojure, Lisp.
-  - `%` for LaTeX.
-  - `REM` for Batch files.
-- **Handles multiline selections** (flattens them into a single line).
-- User-defined keyboard shortcut via standard VS Code settings.
-- Customizable width and padding characters.
-
-## How to Use
-
-1. **Select text** — highlight the word or phrase you want to turn into a banner.
-2. **Run the command**
-    - **Command Palette:** press `Ctrl+Shift+P` (`Cmd+Shift+P` on macOS), start typing “Create Banner Comment” and choose the command.
-    - **Keyboard shortcut:** by default press `Ctrl+Alt+B` (Windows / Linux) or `Cmd+Alt+B` (macOS).
-
-After execution the selected text is replaced with a banner appropriate for the current file language.
-
-**JavaScript/TypeScript Example:**
-```javascript
-// ----------------- YOUR SELECTED TEXT -----------------
-```
-
-**Python Example:**
-```python
-# ----------------- YOUR SELECTED TEXT -----------------
-```
-
-**Box Style Examples:**
-
-Unicode (default):
-```javascript
-// ╔══════════════════════════════════════════════════════════════════════════╗
-// ║                           YOUR SELECTED TEXT                             ║
-// ╚══════════════════════════════════════════════════════════════════════════╝
-```
-
-Rounded:
-```python
-# ╭──────────────────────────────────────────────────────────────────────────╮
-# │                           YOUR SELECTED TEXT                             │
-# ╰──────────────────────────────────────────────────────────────────────────╯
-```
-
-Heavy:
-```typescript
-// ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-// ┃                           YOUR SELECTED TEXT                             ┃
-// ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-ASCII:
-```python
-# +--------------------------------------------------------------------------+
-# |                           YOUR SELECTED TEXT                             |
-# +--------------------------------------------------------------------------+
-```
-
-(The exact appearance depends on the configured width and style)
-
-## Configuration
-
-This extension provides the following settings that can be configured in your VS Code User or Workspace settings:
-
-- `bannerComment.lineWidth`: The total width of the banner comment line.
-  - Type: `integer`
-  - Default: `80`
-- `bannerComment.paddingCharacter`: The character used to pad the banner comment (for simple style).
-  - Type: `string`
-  - Default: `"-"`
-- `bannerComment.style`: The style of banner to create.
-  - Type: `string`
-  - Values: `"simple"`, `"box"`
-  - Default: `"simple"`
-- `bannerComment.boxStyle`: The style of box border (when using box style).
-  - Type: `string`
-  - Values: `"unicode"`, `"ascii"`, `"rounded"`, `"heavy"`
-  - Default: `"unicode"`
-
-Example `settings.json` for simple style:
-
-```json
-{
-    "bannerComment.lineWidth": 100,
-    "bannerComment.paddingCharacter": "*"
-}
-```
-
-Example `settings.json` for box style:
-
-```json
-{
-    "bannerComment.style": "box",
-    "bannerComment.boxStyle": "rounded",
-    "bannerComment.lineWidth": 80
-}
-```
-
-## Customizing Keybindings
-
-You can customize the keybinding for the "Create banner comment" command to your preference.
-By default, it is bound to `Ctrl+Alt+B` (or `Cmd+Alt+B` on macOS).
-
-To change this:
-
-1. Open the Keyboard Shortcuts editor:
-    - Menu: `File > Preferences > Keyboard Shortcuts` (`Code > Preferences > Keyboard Shortcuts` on macOS).
-    - Command Palette: `Preferences: Open Keyboard Shortcuts`.
-    - Shortcut: `Ctrl+K Ctrl+S`.
-2. In the search bar of the Keyboard Shortcuts editor, type `bannerComment.make` (which is the command ID) or "Create banner comment".
-3. You will see the "Create banner comment" command. You can then click the pencil icon next to it to change its keybinding, or right-click and select "Change Keybinding...".
-4. Enter your desired key combination and press Enter.
-
-Alternatively, you can directly edit your `keybindings.json` file. You can open this file by running "Preferences: Open Keyboard Shortcuts (JSON)" from the Command Palette. Add an entry like this, replacing `"your.desired.keys"` with your chosen key combination:
-
-```json
-{
-    "key": "your.desired.keys",
-    "command": "bannerComment.make",
-    "when": "editorTextFocus"
-}
-```
-
-## Feedback and Suggestions
-
-Found a bug or have an idea? Feel free to open an issue or reach out.
+# Changes Made in This Fork
+## Modify Banner Conversion Target
+- Originally, I had to select some texts in order to create a banner.
+- it's lowkey annoying (plus missing a single text breaks the banner)
+- Furthermore, this extension doesn't actually allow me to create multi-line banners.
+- Which makes text selection kinda meaningless???
+- So I modified the extension to just convert the entire line into a banner.
+## Delete Text Extraction Functions
+- I don't think I'll ever try converting an existing banner into a new one.
+- Therefore, I ended up removing some related functions and format checks.
+- RIP to your carefully written code, D0n-A!
+## Append Mirrored Prefix (Suffix)
+- When manually adding a line seperator, I usually append the comment prefix at the end so it looks symmetric.
+- So why not for banners?
+- Inner width calculation formula has also been modified.
