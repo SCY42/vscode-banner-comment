@@ -54,13 +54,21 @@
                 },
                 "bannerComment.style": {
                     "type": "string",
-                    "enum": ["simple", "box"],
+                    "enum": [
+                        "simple",
+                        "box"
+                    ],
                     "default": "simple",
                     "description": "The style of the banner comment. 'simple' creates a single-line banner, 'box' creates a framed box."
                 },
                 "bannerComment.boxStyle": {
                     "type": "string",
-                    "enum": ["unicode", "ascii", "rounded", "heavy"],
+                    "enum": [
+                        "unicode",
+                        "ascii",
+                        "rounded",
+                        "heavy"
+                    ],
                     "default": "unicode",
                     "enumDescriptions": [
                         "Double-line Unicode box: ╔═══╗ ║ ╚═══╝",
@@ -68,7 +76,6 @@
                         "Rounded corners: ╭───╮ │ ╰───╯",
                         "Heavy/bold lines: ┏━━━┓ ┃ ┗━━━┛"
                     ],
-                    "default": "unicode",
                     "description": "The style of box border when using 'box' style."
                 }
             }
@@ -95,7 +102,7 @@
         "eslint": "^9.0.0",
         "glob": "^10.3.10",
         "mocha": "^11.7.0",
-        "typescript": "^5.3.3",
+        "typescript": "^5.8.3",
         "typescript-eslint": "^8.34.1"
     },
     "keywords": [
