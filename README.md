@@ -13,3 +13,6 @@
 - When manually adding a line seperator, I usually append the comment prefix at the end so it looks symmetric.
 - So why not for banners?
 - Inner width calculation formula has also been modified.
+# TODO
+- [ ] Support multi-line banner
+- [ ] (TBA)
